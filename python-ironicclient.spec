@@ -5,13 +5,13 @@
 %endif
 
 Name:		python-ironicclient
-Version:	0.1.2
-Release:	6%{?dist}
+Version:	0.3.1
+Release:	1%{?dist}
 Summary:	Python client for Ironic
 
 License:	ASL 2.0
 URL:		https://pypi.python.org/pypi/python-ironicclient
-Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0.1.2.tar.gz
+Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0.3.1.tar.gz
 
 Patch0001:	0001-ironicclient-Remove-runtime-dependency-on-python-pbr.patch
 Patch0002:	0002-ironicclient-Prevent-pbr-dependencies-handling.patch
@@ -57,9 +57,12 @@ sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
 
 
 %changelog
+
+* Thu Oct 16 2014 Angus Thomas <athomas@redhat.com> - 0.3.1-1
+- Rebased to python-ironicclient-0.3.1
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
-
 
 * Wed Mar 26 2014 Angus Thomas <athomas@redhat.com> - 0.1.2-5
 - Removed instance of macro in Changelog
