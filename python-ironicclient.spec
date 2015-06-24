@@ -6,15 +6,13 @@
 
 Name:		python-ironicclient
 Version:	0.3.1
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Python client for Ironic
 
 License:	ASL 2.0
 URL:		https://pypi.python.org/pypi/python-ironicclient
 Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0.3.1.tar.gz
 
-Patch0001:	0001-ironicclient-Remove-runtime-dependency-on-python-pbr.patch
-Patch0002:	0002-ironicclient-Prevent-pbr-dependencies-handling.patch
 
 BuildArch:	noarch
 
@@ -22,6 +20,7 @@ BuildRequires:	python2-devel
 BuildRequires:	python-pbr
 BuildRequires:	python-setuptools
 
+Requires:	python-pbr
 Requires:	python-prettytable
 Requires:	python-keystoneclient
 Requires:	python-six
@@ -36,11 +35,11 @@ A python and command line client library for Ironic.
 %prep
 %setup -q -n %{name}-%{version}
 
-%patch0001 -p1
-%patch0002 -p1
+# Remove bundled egg-info
+rm -rf %{name}.egg-info
 
-# We provide version like this in order to remove runtime dep on pbr.
-sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
+# Let RPM handle the requirements
+rm -f {test-,}requirements.txt
 
 %build
 %{__python2} setup.py build
@@ -57,6 +56,10 @@ sed -i s/REDHATIRONICCLIENTVERSION/%{version}/ ironicclient/__init__.py
 
 
 %changelog
+* Wed Jun 24 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.3.1-3
+- Cleanup spec
+- Drop unneeded patches
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
