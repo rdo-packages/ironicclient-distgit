@@ -5,13 +5,13 @@
 %endif
 
 Name:		python-ironicclient
-Version:	0.3.1
-Release:	3%{?dist}
+Version:	0.8.1
+Release:	1%{?dist}
 Summary:	Python client for Ironic
 
 License:	ASL 2.0
 URL:		https://pypi.python.org/pypi/python-ironicclient
-Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0.3.1.tar.gz
+Source0:	http://pypi.python.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
 
 
 BuildArch:	noarch
@@ -25,18 +25,25 @@ Requires:	python-prettytable
 Requires:	python-keystoneclient
 Requires:	python-six
 Requires:	python-stevedore
-Requires:	python-anyjson
-Requires:	python-httplib2
+Requires:	python-keystoneclient
 Requires:	python-lxml
+Requires:	python-pbr
+Requires:	python-prettytable
+Requires:	python-six
+Requires:	python-stevedore
+Requires:	python-oslo-i18n
+Requires:	python-oslo-utils
+Requires:	python-anyjson
+Requires:	python-appdirs
+Requires:	python-dogpile-cache
+Requires:	python-httplib2
+
 
 %description
 A python and command line client library for Ironic.
 
 %prep
 %setup -q -n %{name}-%{version}
-
-# Remove bundled egg-info
-rm -rf %{name}.egg-info
 
 # Let RPM handle the requirements
 rm -f {test-,}requirements.txt
@@ -56,6 +63,9 @@ rm -f {test-,}requirements.txt
 
 
 %changelog
+* Wed Oct 07 2015 Alan Pevec <alan.pevec@redhat.com> 0.8.1-1
+- Update to upstream 0.8.1
+
 * Wed Jun 24 2015 Haïkel Guémar <hguemar@fedoraproject.org> - 0.3.1-3
 - Cleanup spec
 - Drop unneeded patches
