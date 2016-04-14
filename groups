@@ -1,5 +1,5 @@
-# UUID          Group Name
-6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
-d61340cb22d99fab022029bb3c46f04cb2ab46c7       	ironicclient-distgit-core
-444314749c76730400521aa60444b05995dac7b0        	ironicclient-distgit-ptl
-global:Registered-Users		Registered Users
+# UUID                                  	Group Name
+#
+444314749c76730400521aa60444b05995dac7b0	openstack/ironicclient-distgit-ptl
+d61340cb22d99fab022029bb3c46f04cb2ab46c7	ironicclient-distgit-core
+global:Registered-Users                 	Registered Users
