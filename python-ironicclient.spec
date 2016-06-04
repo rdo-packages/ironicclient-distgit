@@ -6,8 +6,8 @@
 %endif
 
 Name:           python-ironicclient
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -61,6 +61,9 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 
 %changelog
+* Sat Jun 04 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.3.1-1
+- Update to 1.3.1
+
 * Fri Apr 15 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.2.0-2
 - Fix dependencies
 
