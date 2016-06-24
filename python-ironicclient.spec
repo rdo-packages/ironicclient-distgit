@@ -1,38 +1,82 @@
-%if 0%{?rhel} && 0%{?rhel} <= 6
-%{!?__python2: %global __python2 /usr/bin/python2}
-%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
+%if 0%{?fedora}
+%global with_python3 1
 %endif
 
-Name:		python-ironicclient
-Version:	XXX
-Release:	XXX
-Summary:	Python client for Ironic
+%global sname ironicclient
 
-License:	ASL 2.0
-URL:		https://pypi.python.org/pypi/python-ironicclient
-Source0:	http://tarballs.openstack.org/python-ironicclient/python-ironicclient-0.3.1.tar.gz
+Name:           python-ironicclient
+Version:        XXX
+Release:        XXX
+Summary:        Python client for Ironic
 
-BuildArch:	noarch
+License:        ASL 2.0
+URL:            https://pypi.python.org/pypi/python-ironicclient
+Source0:        http://tarballs.openstack.org/python-ironicclient/python-ironicclient-%{version}%{?milestone}.tar.gz
+BuildArch:      noarch
 
-BuildRequires:	python2-devel
-BuildRequires:	python-pbr
-BuildRequires:	python-setuptools
-
-Requires:	python-anyjson
-Requires:	python-dogpile-cache
-Requires:	python-httplib2
-Requires:	python-keystoneclient
-Requires:	python-lxml
-Requires:	python-pbr
-Requires:	python-prettytable
-Requires:	python-six
-Requires:	python-stevedore
-Requires:	python-oslo-i18n
-Requires:	python-oslo-utils
 
 %description
 A python and command line client library for Ironic.
+
+
+%package -n python2-%{sname}
+Summary:        Python client for Ironic
+
+BuildRequires:  python2-devel
+BuildRequires:  python-pbr >= 1.6
+BuildRequires:  python-setuptools
+
+Requires:       python-anyjson
+Requires:       python-appdirs >= 1.3.0
+Requires:       python-cliff
+Requires:       python-dogpile-cache >= 0.5.7
+Requires:       python-httplib2
+Requires:       python-openstackclient >= 2.1.0
+Requires:       python-keystoneauth1 >= 2.1.0
+Requires:       python-lxml
+Requires:       python-pbr >= 1.6
+Requires:       python-prettytable
+Requires:       python-six >= 1.9.0
+Requires:       python-stevedore
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-utils >= 3.5.0
+
+%{?python_provide:%python_provide python2-%{sname}}
+
+%description -n python2-%{sname}
+A python and command line client library for Ironic
+
+
+%if 0%{?with_python3}
+%package -n python3-%{sname}
+Summary:        Python client for Ironic
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr >= 1.6
+BuildRequires:  python3-setuptools
+
+Requires:       python3-anyjson
+Requires:       python3-appdirs >= 1.3.0
+Requires:       python3-cliff
+Requires:       python3-dogpile-cache >= 0.5.7
+Requires:       python3-httplib2
+Requires:       python3-openstackclient >= 2.1.0
+Requires:       python3-keystoneauth1 >= 2.1.0
+Requires:       python3-lxml
+Requires:       python3-pbr >= 1.6
+Requires:       python3-prettytable
+Requires:       python3-six >= 1.9.0
+Requires:       python3-stevedore
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-utils >= 3.5.0
+
+%{?python_provide:%python_provide python3-%{sname}}
+
+%description -n python3-%{sname}
+A python and command line client library for Ironic
+%endif
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
@@ -42,17 +86,44 @@ A python and command line client library for Ironic.
 rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %build
-%{__python2} setup.py build
+%py2_build
+%if 0%{?with_python3}
+%py3_build
+%endif
+
 
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
+%if 0%{?with_python3}
+%py3_install
+mv %{buildroot}%{_bindir}/ironic %{buildroot}%{_bindir}/ironic-%{python3_version}
+ln -s ./ironic-%{python3_version} %{buildroot}%{_bindir}/ironic-3
+%endif
+
+%py2_install
+mv %{buildroot}%{_bindir}/ironic %{buildroot}%{_bindir}/ironic-%{python2_version}
+ln -s ./ironic-%{python2_version} %{buildroot}%{_bindir}/ironic-2
+
+ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
-%files
-%doc LICENSE README.rst
-%{_bindir}/*
+%files -n python2-%{sname}
+%doc README.rst
+%license LICENSE
+%{_bindir}/ironic
+%{_bindir}/ironic-2
+%{_bindir}/ironic-%{python2_version}
 %{python2_sitelib}/ironicclient*
 %{python2_sitelib}/python_ironicclient*
+
+%if 0%{?with_python3}
+%files -n python3-%{sname}
+%doc README.rst
+%license LICENSE
+%{_bindir}/ironic-3
+%{_bindir}/ironic-%{python3_version}
+%{python3_sitelib}/ironicclient*
+%{python3_sitelib}/python_ironicclient*
+%endif
 
 
 %changelog
