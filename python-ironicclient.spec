@@ -8,7 +8,7 @@
 
 Name:           python-ironicclient
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -127,6 +127,10 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
 %changelog
+* Sat Jun 25 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1.3.1-2
+- Add python3 subpackage (RHBZ#1327523)
+- Modernize spec file
+
 * Sat Jun 04 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.3.1-1
 - Update to 1.3.1
 - Cleanup EL6 crufts
