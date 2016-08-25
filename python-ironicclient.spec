@@ -30,7 +30,6 @@ BuildRequires:  python-setuptools
 
 Requires:       python-anyjson
 Requires:       python-appdirs >= 1.3.0
-Requires:       python-cliff
 Requires:       python-dogpile-cache >= 0.5.7
 Requires:       python-httplib2
 Requires:       python-openstackclient >= 2.1.0
@@ -40,6 +39,7 @@ Requires:       python-pbr >= 1.6
 Requires:       python-prettytable
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore
+Requires:       python-osc-lib >= 1.0.2
 Requires:       python-oslo-i18n >= 2.1.0
 Requires:       python-oslo-utils >= 3.5.0
 
