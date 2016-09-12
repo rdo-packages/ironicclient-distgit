@@ -30,10 +30,10 @@ BuildRequires:  python-setuptools
 
 Requires:       python-anyjson
 Requires:       python-appdirs >= 1.3.0
-Requires:       python-dogpile-cache >= 0.5.7
+Requires:       python-dogpile-cache >= 0.6.2
 Requires:       python-httplib2
 Requires:       python-openstackclient >= 2.1.0
-Requires:       python-keystoneauth1 >= 2.1.0
+Requires:       python-keystoneauth1 >= 2.10.0
 Requires:       python-lxml
 Requires:       python-pbr >= 1.6
 Requires:       python-prettytable
@@ -41,7 +41,7 @@ Requires:       python-six >= 1.9.0
 Requires:       python-stevedore
 Requires:       python-osc-lib >= 1.0.2
 Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.5.0
+Requires:       python-oslo-utils >= 3.16.0
 
 %{?python_provide:%python_provide python2-%{sname}}
 
@@ -59,10 +59,10 @@ BuildRequires:  python3-setuptools
 
 Requires:       python3-anyjson
 Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-dogpile-cache >= 0.5.7
+Requires:       python3-dogpile-cache >= 0.6.2
 Requires:       python3-httplib2
 Requires:       python3-openstackclient >= 2.1.0
-Requires:       python3-keystoneauth1 >= 2.1.0
+Requires:       python3-keystoneauth1 >= 2.10.0
 Requires:       python3-lxml
 Requires:       python3-pbr >= 1.6
 Requires:       python3-prettytable
@@ -70,7 +70,7 @@ Requires:       python3-six >= 1.9.0
 Requires:       python3-stevedore
 Requires:       python3-osc-lib >= 1.0.2
 Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.5.0
+Requires:       python3-oslo-utils >= 3.16.0
 
 %{?python_provide:%python_provide python3-%{sname}}
 
