@@ -7,8 +7,8 @@
 %global sname ironicclient
 
 Name:           python-ironicclient
-Version:        XXX
-Release:        XXX
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -127,3 +127,6 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
 %changelog
+* Mon Sep 12 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.7.0-1
+- Update to 1.7.0
+
