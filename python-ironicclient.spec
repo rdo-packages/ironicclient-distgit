@@ -13,7 +13,7 @@ Summary:        Python client for Ironic
 
 License:        ASL 2.0
 URL:            https://pypi.python.org/pypi/python-ironicclient
-Source0:        http://tarballs.openstack.org/python-ironicclient/python-ironicclient-%{version}%{?milestone}.tar.gz
+Source0:        https://tarballs.openstack.org/python-ironicclient/python-ironicclient-%{version}%{?milestone}.tar.gz
 BuildArch:      noarch
 
 
