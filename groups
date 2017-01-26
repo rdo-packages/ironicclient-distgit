@@ -1,6 +1,6 @@
 # UUID                                  	Group Name
 #
 444314749c76730400521aa60444b05995dac7b0	openstack/ironicclient-distgit-ptl
-d61340cb22d99fab022029bb3c46f04cb2ab46c7	openstack/ironicclient-distgit-core
 63673ea7f2ae6a5666566b1ea9f14e473d00f5a9	rdo-core
+d61340cb22d99fab022029bb3c46f04cb2ab46c7	openstack/ironicclient-distgit-core
 global:Registered-Users                 	Registered Users
