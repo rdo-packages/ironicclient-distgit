@@ -7,7 +7,7 @@
 %global sname ironicclient
 
 Name:           python-ironicclient
-Version:        1.11.0
+Version:        1.11.1
 Release:        1%{?dist}
 Summary:        Python client for Ironic
 
@@ -135,6 +135,9 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
 %changelog
+* Thu Mar 16 2017 Alfredo Moralejo <amoralej@redhat.com> 1.11.1-1
+- Update to 1.11.1
+
 * Wed Feb 08 2017 Alfredo Moralejo <amoralej@redhat.com> 1.11.0-1
 - Update to 1.11.0
 
