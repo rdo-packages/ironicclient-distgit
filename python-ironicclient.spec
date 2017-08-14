@@ -7,8 +7,8 @@
 %global sname ironicclient
 
 Name:           python-ironicclient
-Version:        XXX
-Release:        XXX
+Version:        1.16.0
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -129,3 +129,6 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
 %changelog
+* Mon Aug 14 2017 Alfredo Moralejo <amoralej@redhat.com> 1.16.0-1
+- Update to 1.16.0
+
