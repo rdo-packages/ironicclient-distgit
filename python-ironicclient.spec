@@ -46,6 +46,7 @@ Requires:       python-oslo-utils >= 3.20.0
 Requires:       python-requests
 Requires:       PyYAML
 
+
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
@@ -59,6 +60,7 @@ Summary:        Python client for Ironic
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
+BuildRequires:  openstack-macros
 
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-dogpile-cache >= 0.6.2
@@ -87,7 +89,7 @@ Requires:       python3-PyYAML
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
-rm -rf {test-,}requirements.txt tools/{pip,test}-requires
+%py_req_cleanup
 
 %build
 %py2_build
