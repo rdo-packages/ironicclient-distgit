@@ -6,6 +6,8 @@
 
 %global sname ironicclient
 
+%global common_desc A python and command line client library for Ironic
+
 Name:           python-ironicclient
 Version:        XXX
 Release:        XXX
@@ -18,7 +20,7 @@ BuildArch:      noarch
 
 
 %description
-A python and command line client library for Ironic.
+%{common_desc}
 
 
 %package -n python2-%{sname}
@@ -47,7 +49,7 @@ Requires:       PyYAML
 %{?python_provide:%python_provide python2-%{sname}}
 
 %description -n python2-%{sname}
-A python and command line client library for Ironic
+%{common_desc}
 
 
 %if 0%{?with_python3}
@@ -77,7 +79,7 @@ Requires:       python3-PyYAML
 %{?python_provide:%python_provide python3-%{sname}}
 
 %description -n python3-%{sname}
-A python and command line client library for Ironic
+%{common_desc}
 %endif
 
 %prep
