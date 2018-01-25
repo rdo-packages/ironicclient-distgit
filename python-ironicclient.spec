@@ -131,3 +131,4 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-ironicclient/commit/?id=ce0b20dae07bb717a7c038815fd0a68320c91a34
