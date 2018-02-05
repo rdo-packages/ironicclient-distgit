@@ -27,24 +27,28 @@ BuildArch:      noarch
 Summary:        Python client for Ironic
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr >= 2.0.0
-BuildRequires:  python-setuptools
+BuildRequires:  python2-pbr >= 2.0.0
+BuildRequires:  python2-setuptools
 
-Requires:       python-appdirs >= 1.3.0
+Requires:       python2-appdirs >= 1.3.0
+Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-pbr >= 2.0.0
+Requires:       python2-prettytable
+Requires:       python2-six >= 1.10.0
+Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-serialization >= 2.18.0
+Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-requests
+%if 0%{?fedora} > 0
+Requires:       python2-dogpile-cache >= 0.6.2
+Requires:       python2-jsonschema
+Requires:       python2-pyyaml
+%else
 Requires:       python-dogpile-cache >= 0.6.2
-Requires:       python-httplib2
 Requires:       python-jsonschema
-Requires:       python-openstackclient >= 3.3.0
-Requires:       python-keystoneauth1 >= 3.1.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-prettytable
-Requires:       python-six >= 1.9.0
-Requires:       python-osc-lib >= 1.7.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-serialization >= 1.10.0
-Requires:       python-oslo-utils >= 3.20.0
-Requires:       python-requests
 Requires:       PyYAML
+%endif
 
 %{?python_provide:%python_provide python2-%{sname}}
 
@@ -62,17 +66,15 @@ BuildRequires:  python3-setuptools
 
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-dogpile-cache >= 0.6.2
-Requires:       python3-httplib2
 Requires:       python3-jsonschema
-Requires:       python3-openstackclient >= 3.3.0
-Requires:       python3-keystoneauth1 >= 3.1.0
+Requires:       python3-keystoneauth1 >= 3.3.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-prettytable
-Requires:       python3-six >= 1.9.0
-Requires:       python3-osc-lib >= 1.7.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-six >= 1.10.0
+Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-requests
 Requires:       python3-PyYAML
 
