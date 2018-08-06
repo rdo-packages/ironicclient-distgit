@@ -31,11 +31,11 @@ BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-setuptools
 
 Requires:       python2-appdirs >= 1.3.0
-Requires:       python2-keystoneauth1 >= 3.3.0
+Requires:       python2-keystoneauth1 >= 3.4.0
 Requires:       python2-pbr >= 2.0.0
 Requires:       python2-prettytable
 Requires:       python2-six >= 1.10.0
-Requires:       python2-osc-lib >= 1.8.0
+Requires:       python2-osc-lib >= 1.10.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-serialization >= 2.18.0
 Requires:       python2-oslo-utils >= 3.33.0
@@ -67,11 +67,11 @@ BuildRequires:  python3-setuptools
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-dogpile-cache >= 0.6.2
 Requires:       python3-jsonschema
-Requires:       python3-keystoneauth1 >= 3.3.0
+Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-prettytable
 Requires:       python3-six >= 1.10.0
-Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
