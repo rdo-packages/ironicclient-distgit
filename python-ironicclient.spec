@@ -30,6 +30,7 @@ BuildRequires:  python2-devel
 BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-setuptools
 
+Requires:       genisoimage
 Requires:       python2-appdirs >= 1.3.0
 Requires:       python2-keystoneauth1 >= 3.4.0
 Requires:       python2-pbr >= 2.0.0
@@ -64,6 +65,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
 
+Requires:       genisoimage
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-dogpile-cache >= 0.6.2
 Requires:       python3-jsonschema
