@@ -1,8 +1,15 @@
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
-
-%if 0%{?fedora}
-%global with_python3 1
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
 %endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname ironicclient
 
@@ -23,68 +30,41 @@ BuildArch:      noarch
 %{common_desc}
 
 
-%package -n python2-%{sname}
+%package -n python%{pyver}-%{sname}
 Summary:        Python client for Ironic
+%{?python_provide:%python_provide python%{pyver}-%{sname}}
+%if %{pyver} == 3
+Obsoletes: python2-%{sname} < %{version}-%{release}
+%endif
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-setuptools
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr >= 2.0.0
+BuildRequires:  python%{pyver}-setuptools
 
 Requires:       genisoimage
-Requires:       python2-appdirs >= 1.3.0
-Requires:       python2-keystoneauth1 >= 3.4.0
-Requires:       python2-pbr >= 2.0.0
-Requires:       python2-prettytable
-Requires:       python2-six >= 1.10.0
-Requires:       python2-osc-lib >= 1.10.0
-Requires:       python2-oslo-i18n >= 3.15.3
-Requires:       python2-oslo-serialization >= 2.18.0
-Requires:       python2-oslo-utils >= 3.33.0
-Requires:       python2-requests
-%if 0%{?fedora} > 0
-Requires:       python2-dogpile-cache >= 0.6.2
-Requires:       python2-jsonschema
-Requires:       python2-pyyaml
-%else
+Requires:       python%{pyver}-appdirs >= 1.3.0
+Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
+Requires:       python%{pyver}-pbr >= 2.0.0
+Requires:       python%{pyver}-prettytable
+Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python%{pyver}-osc-lib >= 1.10.0
+Requires:       python%{pyver}-oslo-i18n >= 3.15.3
+Requires:       python%{pyver}-oslo-serialization >= 2.18.0
+Requires:       python%{pyver}-oslo-utils >= 3.33.0
+Requires:       python%{pyver}-requests
+# Handle python2 exception
+%if %{pyver} == 2
 Requires:       python-dogpile-cache >= 0.6.2
 Requires:       python-jsonschema
 Requires:       PyYAML
+%else
+Requires:       python%{pyver}-dogpile-cache >= 0.6.2
+Requires:       python%{pyver}-jsonschema
+Requires:       python%{pyver}-pyyaml
 %endif
 
-%{?python_provide:%python_provide python2-%{sname}}
-
-%description -n python2-%{sname}
+%description -n python%{pyver}-%{sname}
 %{common_desc}
-
-
-%if 0%{?with_python3}
-%package -n python3-%{sname}
-Summary:        Python client for Ironic
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-setuptools
-
-Requires:       genisoimage
-Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-dogpile-cache >= 0.6.2
-Requires:       python3-jsonschema
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-prettytable
-Requires:       python3-six >= 1.10.0
-Requires:       python3-osc-lib >= 1.10.0
-Requires:       python3-oslo-i18n >= 3.15.3
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-requests
-Requires:       python3-PyYAML
-
-%{?python_provide:%python_provide python3-%{sname}}
-
-%description -n python3-%{sname}
-%{common_desc}
-%endif
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
@@ -94,44 +74,19 @@ Requires:       python3-PyYAML
 rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %build
-%py2_build
-%if 0%{?with_python3}
-%py3_build
-%endif
-
+%{pyver_build}
 
 %install
-%if 0%{?with_python3}
-%py3_install
-mv %{buildroot}%{_bindir}/ironic %{buildroot}%{_bindir}/ironic-%{python3_version}
-ln -s ./ironic-%{python3_version} %{buildroot}%{_bindir}/ironic-3
-%endif
+%{pyver_install}
+# Create a versioned binary for backwards compatibility until everything is pure py3
+ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 
-%py2_install
-mv %{buildroot}%{_bindir}/ironic %{buildroot}%{_bindir}/ironic-%{python2_version}
-ln -s ./ironic-%{python2_version} %{buildroot}%{_bindir}/ironic-2
-
-ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
-
-
-%files -n python2-%{sname}
+%files -n python%{pyver}-%{sname}
 %doc README.rst
 %license LICENSE
 %{_bindir}/ironic
-%{_bindir}/ironic-2
-%{_bindir}/ironic-%{python2_version}
-%{python2_sitelib}/ironicclient*
-%{python2_sitelib}/python_ironicclient*
-
-%if 0%{?with_python3}
-%files -n python3-%{sname}
-%doc README.rst
-%license LICENSE
-%{_bindir}/ironic-3
-%{_bindir}/ironic-%{python3_version}
-%{python3_sitelib}/ironicclient*
-%{python3_sitelib}/python_ironicclient*
-%endif
-
+%{_bindir}/ironic-%{pyver}
+%{pyver_sitelib}/ironicclient*
+%{pyver_sitelib}/python_ironicclient*
 
 %changelog
