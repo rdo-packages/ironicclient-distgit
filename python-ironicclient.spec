@@ -16,8 +16,8 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        XXX
-Release:        XXX
+Version:        2.7.0
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -90,3 +90,6 @@ ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 %{pyver_sitelib}/python_ironicclient*
 
 %changelog
+* Mon Mar 11 2019 RDO <dev@lists.rdoproject.org> 2.7.0-1
+- Update to 2.7.0
+
