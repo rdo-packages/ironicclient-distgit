@@ -14,8 +14,8 @@ Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
-URL:            https://pypi.python.org/pypi/python-ironicclient
-Source0:        https://tarballs.openstack.org/python-ironicclient/python-ironicclient-%{version}%{?milestone}.tar.gz
+URL:            https://pypi.python.org/pypi/python-%{sname}
+Source0:        https://tarballs.openstack.org/python-%{sname}/python-%{sname}-%{version}%{?milestone}.tar.gz
 BuildArch:      noarch
 
 
@@ -118,8 +118,8 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 %{_bindir}/ironic
 %{_bindir}/ironic-2
 %{_bindir}/ironic-%{python2_version}
-%{python2_sitelib}/ironicclient*
-%{python2_sitelib}/python_ironicclient*
+%{python2_sitelib}/%{sname}*
+%{python2_sitelib}/python_%{sname}*
 
 %if 0%{?with_python3}
 %files -n python3-%{sname}
@@ -127,8 +127,8 @@ ln -s ./ironic-2 %{buildroot}%{_bindir}/ironic
 %license LICENSE
 %{_bindir}/ironic-3
 %{_bindir}/ironic-%{python3_version}
-%{python3_sitelib}/ironicclient*
-%{python3_sitelib}/python_ironicclient*
+%{python3_sitelib}/%{sname}*
+%{python3_sitelib}/python_%{sname}*
 %endif
 
 
