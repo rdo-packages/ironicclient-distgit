@@ -21,8 +21,8 @@ Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
-URL:            https://pypi.python.org/pypi/python-ironicclient
-Source0:        https://tarballs.openstack.org/python-ironicclient/python-ironicclient-%{version}%{?milestone}.tar.gz
+URL:            https://pypi.python.org/pypi/python-%{sname}
+Source0:        https://tarballs.openstack.org/python-%{sname}/python-%{sname}-%{version}%{?milestone}.tar.gz
 BuildArch:      noarch
 
 
@@ -86,8 +86,8 @@ ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 %license LICENSE
 %{_bindir}/ironic
 %{_bindir}/ironic-%{pyver}
-%{pyver_sitelib}/ironicclient*
-%{pyver_sitelib}/python_ironicclient*
+%{pyver_sitelib}/%{sname}*
+%{pyver_sitelib}/python_%{sname}*
 
 %changelog
 * Thu May 16 2019 RDO <dev@lists.rdoproject.org> 2.7.1-1
