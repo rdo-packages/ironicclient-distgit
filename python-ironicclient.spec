@@ -16,7 +16,7 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        2.7.1
+Version:        2.7.2
 Release:        1%{?dist}
 Summary:        Python client for Ironic
 
@@ -90,6 +90,9 @@ ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 %{pyver_sitelib}/python_%{sname}*
 
 %changelog
+* Tue May 28 2019 RDO <dev@lists.rdoproject.org> 2.7.2-1
+- Update to 2.7.2
+
 * Thu May 16 2019 RDO <dev@lists.rdoproject.org> 2.7.1-1
 - Update to 2.7.1
 
