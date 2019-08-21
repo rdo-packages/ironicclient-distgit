@@ -90,3 +90,4 @@ ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 %{pyver_sitelib}/python_%{sname}*
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-ironicclient/commit/?id=f62758cda5953ac22614a783df0165e42e76d60b
