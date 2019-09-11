@@ -45,7 +45,6 @@ Requires:       genisoimage
 Requires:       python%{pyver}-appdirs >= 1.3.0
 Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
 Requires:       python%{pyver}-pbr >= 2.0.0
-Requires:       python%{pyver}-prettytable
 Requires:       python%{pyver}-six >= 1.10.0
 Requires:       python%{pyver}-osc-lib >= 1.10.0
 Requires:       python%{pyver}-oslo-i18n >= 3.15.3
