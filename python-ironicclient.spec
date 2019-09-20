@@ -78,14 +78,10 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %install
 %{pyver_install}
-# Create a versioned binary for backwards compatibility until everything is pure py3
-ln -s ironic %{buildroot}%{_bindir}/ironic-%{pyver}
 
 %files -n python%{pyver}-%{sname}
 %doc README.rst
 %license LICENSE
-%{_bindir}/ironic
-%{_bindir}/ironic-%{pyver}
 %{pyver_sitelib}/%{sname}*
 %{pyver_sitelib}/python_%{sname}*
 
