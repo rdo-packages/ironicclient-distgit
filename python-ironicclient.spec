@@ -85,3 +85,4 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %{pyver_sitelib}/python_%{sname}*
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/python-ironicclient/commit/?id=a572ae21e72c8197fb25f05d39a5caef99d7e575
