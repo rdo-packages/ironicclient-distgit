@@ -81,6 +81,7 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %files -n python%{pyver}-%{sname}
 %doc README.rst
 %license LICENSE
+%{_bindir}/baremetal
 %{pyver_sitelib}/%{sname}*
 %{pyver_sitelib}/python_%{sname}*
 
