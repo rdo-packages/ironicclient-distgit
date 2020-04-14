@@ -45,12 +45,13 @@ Requires:       genisoimage
 Requires:       python%{pyver}-appdirs >= 1.3.0
 Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
 Requires:       python%{pyver}-pbr >= 2.0.0
-Requires:       python%{pyver}-six >= 1.10.0
 Requires:       python%{pyver}-osc-lib >= 1.10.0
-Requires:       python%{pyver}-oslo-i18n >= 3.15.3
 Requires:       python%{pyver}-oslo-serialization >= 2.18.0
 Requires:       python%{pyver}-oslo-utils >= 3.33.0
 Requires:       python%{pyver}-requests
+Requires:       python%{pyver}-cliff >= 2.8.0
+Requires:       python%{pyver}-stevedore >= 1.20.0
+Requires:       python%{pyver}-openstacksdk >= 0.18.0
 # Handle python2 exception
 %if %{pyver} == 2
 Requires:       python-dogpile-cache >= 0.6.2
