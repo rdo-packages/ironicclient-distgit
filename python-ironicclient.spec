@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global sname ironicclient
@@ -30,40 +19,31 @@ BuildArch:      noarch
 %{common_desc}
 
 
-%package -n python%{pyver}-%{sname}
+%package -n python3-%{sname}
 Summary:        Python client for Ironic
-%{?python_provide:%python_provide python%{pyver}-%{sname}}
-%if %{pyver} == 3
+%{?python_provide:%python_provide python3-%{sname}}
 Obsoletes: python2-%{sname} < %{version}-%{release}
-%endif
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-pbr >= 2.0.0
-BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr >= 2.0.0
+BuildRequires:  python3-setuptools
 
 Requires:       genisoimage
-Requires:       python%{pyver}-appdirs >= 1.3.0
-Requires:       python%{pyver}-keystoneauth1 >= 3.4.0
-Requires:       python%{pyver}-pbr >= 2.0.0
-Requires:       python%{pyver}-osc-lib >= 1.10.0
-Requires:       python%{pyver}-oslo-serialization >= 2.18.0
-Requires:       python%{pyver}-oslo-utils >= 3.33.0
-Requires:       python%{pyver}-requests
-Requires:       python%{pyver}-cliff >= 2.8.0
-Requires:       python%{pyver}-stevedore >= 1.20.0
-Requires:       python%{pyver}-openstacksdk >= 0.18.0
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       python-dogpile-cache >= 0.6.2
-Requires:       python-jsonschema
-Requires:       PyYAML
-%else
-Requires:       python%{pyver}-dogpile-cache >= 0.6.2
-Requires:       python%{pyver}-jsonschema
-Requires:       python%{pyver}-PyYAML
-%endif
+Requires:       python3-appdirs >= 1.3.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-requests
+Requires:       python3-cliff >= 2.8.0
+Requires:       python3-stevedore >= 1.20.0
+Requires:       python3-openstacksdk >= 0.18.0
+Requires:       python3-dogpile-cache >= 0.6.2
+Requires:       python3-jsonschema
+Requires:       python3-PyYAML
 
-%description -n python%{pyver}-%{sname}
+%description -n python3-%{sname}
 %{common_desc}
 
 %prep
@@ -74,16 +54,16 @@ Requires:       python%{pyver}-PyYAML
 rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %install
-%{pyver_install}
+%{py3_install}
 
-%files -n python%{pyver}-%{sname}
+%files -n python3-%{sname}
 %doc README.rst
 %license LICENSE
 %{_bindir}/baremetal
-%{pyver_sitelib}/%{sname}*
-%{pyver_sitelib}/python_%{sname}*
+%{python3_sitelib}/%{sname}*
+%{python3_sitelib}/python_%{sname}*
 
 %changelog
