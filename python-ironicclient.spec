@@ -43,6 +43,8 @@ Requires:       python3-dogpile-cache >= 0.6.2
 Requires:       python3-jsonschema
 Requires:       python3-PyYAML
 
+Suggests:       python3-openstackclient
+
 %description -n python3-%{sname}
 %{common_desc}
 
