@@ -29,19 +29,18 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
 
 Requires:       genisoimage
+Requires:       python3-PyYAML >= 3.12
 Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-keystoneauth1 >= 3.4.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-osc-lib >= 1.10.0
-Requires:       python3-oslo-serialization >= 2.18.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-requests
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-stevedore >= 1.20.0
-Requires:       python3-openstacksdk >= 0.18.0
 Requires:       python3-dogpile-cache >= 0.6.2
-Requires:       python3-jsonschema
-Requires:       python3-PyYAML
+Requires:       python3-jsonschema >= 2.6.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-openstacksdk >= 0.18.0
+Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-stevedore >= 1.20.0
 
 Suggests:       python3-openstackclient
 
