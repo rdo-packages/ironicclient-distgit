@@ -7,8 +7,8 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        4.3.0
-Release:        2%{?dist}
+Version:        4.4.0
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        ASL 2.0
@@ -85,6 +85,9 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %{python3_sitelib}/python_%{sname}*
 
 %changelog
+* Mon Nov 09 2020 RDO <dev@lists.rdoproject.org> 4.4.0-1
+- Update to 4.4.0
+
 * Wed Oct 21 2020 Joel Capitao <jcapitao@redhat.com> 4.3.0-2
 - Enable sources tarball validation using GPG signature.
 
