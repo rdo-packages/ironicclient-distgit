@@ -55,7 +55,9 @@ Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-stevedore >= 1.20.0
 
+%if 0%{?fedora} || 0%{?rhel} > 7
 Suggests:       python3-openstackclient
+%endif
 
 %description -n python3-%{sname}
 %{common_desc}
