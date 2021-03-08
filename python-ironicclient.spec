@@ -42,18 +42,18 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
 
 Requires:       genisoimage
-Requires:       python3-PyYAML >= 3.13
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-dogpile-cache >= 0.8.0
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstacksdk >= 0.18.0
-Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-osc-lib >= 2.0.0
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-stevedore >= 1.20.0
+Requires:       python3-yaml >= 3.13
 
 %if 0%{?fedora} || 0%{?rhel} > 7
 Suggests:       python3-openstackclient
