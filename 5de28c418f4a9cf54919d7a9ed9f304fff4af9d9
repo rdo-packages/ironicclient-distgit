@@ -1,0 +1,9 @@
+Code-Review+2: Dmitry Tantsur <dtantsur@protonmail.com>
+Code-Review+2: Riccardo Pittau <elfosardo@gmail.com>
+Workflow+1: Riccardo Pittau <elfosardo@gmail.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Mon, 08 Mar 2021 17:26:49 +0000
+Reviewed-on: https://review.rdoproject.org/r/32215
+Project: openstack/ironicclient-distgit
+Branch: refs/heads/rpm-master
