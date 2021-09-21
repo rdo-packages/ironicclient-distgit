@@ -7,7 +7,7 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        4.6.2
+Version:        4.6.3
 Release:        1%{?dist}
 Summary:        Python client for Ironic
 
@@ -41,7 +41,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
 
-Requires:       genisoimage
+Requires:       xorriso
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-dogpile-cache >= 0.8.0
@@ -87,6 +87,9 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %{python3_sitelib}/python_%{sname}*
 
 %changelog
+* Mon Oct 11 2021 RDO <dev@lists.rdoproject.org> 4.6.3-1
+- Update to 4.6.3
+
 * Fri Aug 27 2021 RDO <dev@lists.rdoproject.org> 4.6.2-1
 - Update to 4.6.2
 
