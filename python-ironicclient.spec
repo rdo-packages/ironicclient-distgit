@@ -41,7 +41,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
 
-Requires:       genisoimage
+Requires:       xorriso
 Requires:       python3-appdirs >= 1.3.0
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-dogpile-cache >= 0.8.0
