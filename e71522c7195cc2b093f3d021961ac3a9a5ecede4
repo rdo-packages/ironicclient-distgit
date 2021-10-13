@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db259d2_5d3584ab",
+        "filename": "python-ironicclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 147
+      },
+      "writtenOn": "2021-10-13T21:32:29Z",
+      "side": 1,
+      "message": "I\u0027ve proposed a 4.8.1 release which includes the required change but I don\u0027t know how to propose the change here to switch to 4.8.1\n\nhttps://review.opendev.org/c/openstack/releases/+/813896",
+      "revId": "e71522c7195cc2b093f3d021961ac3a9a5ecede4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
+    }
+  ]
+}
