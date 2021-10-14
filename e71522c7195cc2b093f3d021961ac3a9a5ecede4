@@ -16,6 +16,24 @@
       "revId": "e71522c7195cc2b093f3d021961ac3a9a5ecede4",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ca4d75_7dc4d0d3",
+        "filename": "python-ironicclient.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2021-10-14T06:18:26Z",
+      "side": 1,
+      "message": "@sbaker so once it\u0027s released, bot will get upper-constraints updated and then rdoinfo and then a distgit patch to update Version, once that\u0027s available can squash it with this review.",
+      "parentUuid": "9db259d2_5d3584ab",
+      "revId": "e71522c7195cc2b093f3d021961ac3a9a5ecede4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": true
     }
   ]
 }
