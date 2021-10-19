@@ -7,7 +7,7 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        4.8.0
+Version:        4.8.1
 Release:        1%{?dist}
 Summary:        Python client for Ironic
 
@@ -87,6 +87,9 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %{python3_sitelib}/python_%{sname}*
 
 %changelog
+* Tue Oct 19 2021 RDO <dev@lists.rdoproject.org> 4.8.1-1
+- Update to 4.8.1
+
 * Thu Sep 09 2021 RDO <dev@lists.rdoproject.org> 4.8.0-1
 - Update to 4.8.0
 
