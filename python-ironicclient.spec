@@ -1,6 +1,8 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order sphinx openstackdocstheme
 
 %global sname ironicclient
 
@@ -11,7 +13,7 @@ Version:        XXX
 Release:        XXX
 Summary:        Python client for Ironic
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://pypi.python.org/pypi/python-%{sname}
 Source0:        https://tarballs.openstack.org/python-%{sname}/python-%{sname}-%{version}%{?milestone}.tar.gz
 # Required for tarball sources verification
@@ -27,37 +29,16 @@ BuildRequires:  /usr/bin/gpgv2
 BuildRequires:  openstack-macros
 %endif
 
-
 %description
 %{common_desc}
 
-
 %package -n python3-%{sname}
 Summary:        Python client for Ironic
-%{?python_provide:%python_provide python3-%{sname}}
-Obsoletes: python2-%{sname} < %{version}-%{release}
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-setuptools
-
+BuildRequires:  pyproject-rpm-macros
 Requires:       xorriso
-Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-cliff >= 2.8.0
-Requires:       python3-dogpile-cache >= 0.8.0
-Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-keystoneauth1 >= 3.11.0
-Requires:       python3-openstacksdk >= 0.18.0
-Requires:       python3-osc-lib >= 2.0.0
-Requires:       python3-oslo-utils >= 3.33.0
-Requires:       python3-pbr >= 2.0.0
-Requires:       python3-requests >= 2.14.2
-Requires:       python3-stevedore >= 1.20.0
-Requires:       python3-yaml >= 3.13
-
-%if 0%{?fedora} || 0%{?rhel} > 7
 Suggests:       python3-openstackclient
-%endif
 
 %description -n python3-%{sname}
 %{common_desc}
@@ -69,15 +50,28 @@ Suggests:       python3-openstackclient
 %endif
 %setup -q -n %{name}-%{upstream_version}
 
-# Remove the requirements file so that pbr hooks don't add it
-# to distutils requires_dist config
-rm -rf {test-,}requirements.txt tools/{pip,test}-requires
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
 
 %build
-%{py3_build}
+%pyproject_wheel
 
 %install
-%{py3_install}
+%pyproject_install
 
 %files -n python3-%{sname}
 %doc README.rst
