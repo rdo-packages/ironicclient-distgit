@@ -9,8 +9,8 @@
 %global common_desc A python and command line client library for Ironic
 
 Name:           python-ironicclient
-Version:        XXX
-Release:        XXX
+Version:        5.10.0
+Release:        1%{?dist}
 Summary:        Python client for Ironic
 
 License:        Apache-2.0
@@ -81,3 +81,6 @@ done
 %{python3_sitelib}/python_%{sname}*
 
 %changelog
+* Tue Mar 18 2025 RDO <dev@lists.rdoproject.org> 5.10.0-1
+- Update to 5.10.0
+
