@@ -81,3 +81,4 @@ done
 %{python3_sitelib}/python_%{sname}*
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/python-ironicclient/commit/e6423bc5ef2c064bbf0f6ec4d7fc60f3701bc3c9
